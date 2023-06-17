@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add a polygon to a map using a GeoJSON source</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.1/mapbox-gl-draw.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.1/mapbox-gl-draw.css' type='text/css' />
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#form {
+  position: absolute;
+  top: 50%;
+  left: 20%; 
+  transform: translate(-50%, -50%);
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  display: none;
+  width: 300px; 
+  text-align: center; 
+  font-family: Arial, sans-serif; 
+}
+
+#form.show {
+  display: block;
+}
+
+#form .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
+}
+#randomize-button {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+      background-color: #ff0000;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1;
+    }
+#form h2 {
+  margin-top: 0;
+}
+
+#form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  padding-left: 8px;
+  text-align: left; 
+}
+
+#form input[type="text"] {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#form input[type="text"]:read-only {
+  background-color: #eee;
+}
+
+#form input[type="button"] {
+  display: block;
+  margin: 20px auto; 
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#form input[type="button"]:hover {
+  background-color: #45a049;
+}
+#nested-form form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+#nested-form label {
+  text-align: left;
+}
+
+#nested-form input[type="text"] {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+#nested-form {
+  display: none;
+  margin-top: 20px;
+}
+
+#nested-form button {
+  
+  margin: 20px auto; 
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.person-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(45%, 53%);
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  width: 350px;
+  text-align: left;
+  font-family: Arial, sans-serif;
+}
+
+.person-form.show {
+  display: block;
+}
+.search-bar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 5px 10px;
+  z-index: 1;
+  font-family: Arial, sans-serif;
+}
+#eklebutton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar input[type="text"] {
+  width: 300px;
+  height: 30px;;
+  border: none;
+  outline: none;
+}
+
+.search-bar input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+.search-bar input[type="submit"] {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+#toggle-button {
+  position: absolute;
+  top: 44%;
+  left: 10px;
+  background-color: white;
+
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+#toggle-button img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+#toggle-button2 {
+  position: absolute;
+  top: 58%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 60%;
+  border: none;
+  cursor: pointer;
+}
+#toggle-button2 img {
+  width: 40px;
+  height: 40px;
+ 
+}
+#toggle-button3 {
+  position: absolute;
+  top: 51%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 60%;
+  border: none;
+  cursor: pointer;
+}
+#toggle-button3 img {
+  width: 30px;
+  height: 30px;
+ 
+}
+
+.fixed-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  color: black;
+}
+
+.container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+    
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 300px;
+      border-radius: 4px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+
+    label {
+      margin-bottom: 5px;
+    }
+    #dataEkleButton {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 16px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    #dataEkleButton:hover {
+      background-color: #45a049;
+    }
+
+
+    #myForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #myForm label {
+      margin-bottom: 10px;
+    }
+
+    #myForm input[type="text"],
+    #myForm input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    #myForm input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #myForm input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+
+</style>
+
+</head>
+<body>
+<div id="map"></div>
+
+<div class="container">
+  <button id="dataEkleButton">Veri Ekle</button>
+  <div class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="myForm" action="veri_ekle.php" method="post">
+        <label for="kimlik">Bina Kimlik No</label>
+        <input type="text" id="kimlik" name="ad" required>
+        <label for="risk">Risk Grubu</label>
+        <input type="text" id="risk" name="risk" required>
+        <label for="BinaYili">Bina Yılı</label>
+        <input type="text" id="BinaYili" name="BinaYili" required>
+        <label for="DayaniklilikTesti">Dayanıklılık Testi</label>
+        <input type="text" id="DayaniklilikTesti" name="DayaniklilikTesti" required>
+        <input type="submit" value="Kaydet">
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById("dataEkleButton").addEventListener("click", function() {
+    document.querySelector(".modal").style.display = "block";
+  });
+
+  document.querySelector(".close").addEventListener("click", function() {
+    document.querySelector(".modal").style.display = "none";
+  });
+</script>
+<div id="form">
+  <span class="close-btn" onclick="closeForm()">&times;</span>
+  <h2>Bina Verileri</h2>
+  <form>
+    <label for="BinaKimlikNo">Bina Kimlik No:</label>
+    <input type="text" id="BinaKimlikNo" readonly><br><br>
+    <label for="RiskGrubu">Risk Grubu:</label>
+    <input type="text" id="RiskGrubu" readonly><br><br>
+    <label for="BinaYili">Bina Yılı:</label>
+    <input type="text" id="BinaYili" readonly><br><br>
+    <label for="DayaniklilikTesti">Dayanıklılık Testi:</label>
+    <input type="text" id="DayaniklilikTesti"><br><br>
+    <input type="button" value="Binada Yaşayan Kişiler" onclick="openNestedForm()">
+  </form>
+  <div id="nested-form">
+    <h2>Binada Yaşayan Kişiler</h2>
+    <button onclick="openPersonForm(1)">Daire 1</button>
+    <button onclick="openPersonForm(2)">Daire 2</button>
+    <button onclick="openPersonForm(3)">Daire 3</button>
+    <button onclick="openPersonForm(4)">Daire 4</button>
+    <button onclick="openPersonForm(5)">Daire 5</button>
+    <button onclick="openPersonForm(6)">Daire 6</button>
+    <p> Toplam 32 kişi</p>
+
+  </div>  
+  
+  <div id="person-form-template" class="person-form">
+    <h3>Dairedeki Kişi Bilgileri</h3>
+    <label for="isim">1: Taha Erel - 53443335344</label>
+
+ 
+  </div>
+</div>
+<button id="toggle-button">
+  <img src="images/katman.png"  onclick="toggleGeoJSONSource()" alt="Toggle Button"> 
+</button>
+<button id="toggle-button2">
+  <img src="images/simulation.png"  onclick="toggleGeoJSONSource2()" alt="Toggle Button2"> 
+</button>
+<button id="toggle-button3">
+  <img src="images/depremtesti.png"  onclick="toggleGeoJSONSource3()" alt="Toggle Button2"> 
+</button>
+
+<div id="message" class="fixed-message">
+  <p id="message-text" style="margin: 0; font-family: Arial, sans-serif;font-weight: bold;">Risk Grubu</p>
+</div>
+
+
+<div class="search-bar">
+  <input type="text" placeholder="Bina ID, Adres, Uavt giriniz...">
+  <input type="submit" value="Ara">
+</div>
+<script>
+function openPersonForm(personNumber) {
+  const personForm = document.createElement("div");
+  personForm.classList.add("person-form");
+  personForm.classList.add("show");
+  personForm.innerHTML = `
+    <span class="close-btn" onclick="closePersonForm(this)">&times;</span>
+    <h3>Binadaki Kişi Bilgileri</h3>
+    <style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+</style>
+
+<table>
+  <tr>
+    <th>TC</th>
+    <th>İsim</th>
+    <th>Soyisim</th>
+    <th>Telefon</th>
+  </tr>
+  <tr>
+    <td>64365454434</td>
+    <td>Taha</td>
+    <td>Erel</td>
+    <td>05330030343</td>
+  </tr>
+  <tr>
+    <td>45435346471</td>
+    <td>Sema</td>
+    <td>Dirican</td>
+    <td>05456789533</td>
+  </tr>
+  <tr>
+    <td>78465804540</td>
+    <td>Berkay</td>
+    <td>Çınar</td>
+    <td>05765432104</td>
+  </tr>
+</table>
+  `;
+
+  document.getElementById("form").appendChild(personForm);
+}
+
+function closePersonForm(button) {
+  const personForm = button.parentNode;
+  personForm.remove();
+}
+
+
+
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoia29yYXlkdXJtYXoiLCJhIjoiY2wxaGQ4MTJkMGJ6YjNvbG5pMHhueW5tZCJ9.U8kwg2WrbZWmkM7LkHaJvQ';
+const map = new mapboxgl.Map({
+  
+  container: 'map',
+  style: 'mapbox://styles/koraydurmaz/cliyqun5u016t01qvbbogcch0',
+  center: [29.07016, 40.19076],
+  zoom: 13
+});
+
+let geojsonSource = 'building.geojson';
+
+
+const toggleButton = document.getElementById('toggle-button');
+const toggleButton2 = document.getElementById('toggle-button2');
+const toggleButton3 = document.getElementById('toggle-button3');
+function openForm() {
+  document.getElementById("form").classList.add("show");
+}
+
+function closeForm() {
+  document.getElementById("form").classList.remove("show");
+}
+
+function openNestedForm() {
+  document.getElementById("nested-form").style.display = "block";
+}
+
+function datagir(){
+  
+}
+
+function toggleGeoJSONSource() {
+    if (geojsonSource === 'building.geojson') {
+      geojsonSource = 'layer0.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.4);
+      toggleButton.style.backgroundColor= '#bebebe';
+      document.getElementById('message-text').innerText = 'Zemin Değerleri'; 
+    }
+    else if(geojsonSource === 'simulation.geojson')
+    {
+      geojsonSource = 'layer0.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.4);
+      toggleButton.style.backgroundColor = '#bebebe';
+      document.getElementById('message-text').innerText = 'Zemin Değerleri'; 
+
+    }
+    else {
+      geojsonSource = 'building.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
+      toggleButton.style.backgroundColor = 'white';
+      document.getElementById('message-text').innerText = 'Risk Raporu'; 
+
+    }
+
+    map.getSource('maine').setData('/' + geojsonSource);
+  }
+  function toggleGeoJSONSource2() {
+    if (geojsonSource === 'building.geojson') {
+      geojsonSource = 'simulation.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
+      toggleButton2.style.backgroundColor= '#bebebe';
+      document.getElementById('message-text').innerText = 'Deprem Simülasyonu'; 
+    }
+    else if(geojsonSource === 'layer0.geojson')
+    {
+      geojsonSource = 'simulation.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
+      toggleButton2.style.backgroundColor= '#bebebe';
+      document.getElementById('message-text').innerText = 'Deprem Simülasyonu'; 
+
+    }
+    else {
+      geojsonSource = 'building.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
+      toggleButton2.style.backgroundColor= 'white';
+        document.getElementById('message-text').innerText = 'Risk Raporu'; 
+
+    }
+
+    map.getSource('maine').setData('/' + geojsonSource);
+  }
+
+  function toggleGeoJSONSource3() {
+    if (geojsonSource === 'building.geojson') {
+      geojsonSource = 'sehirdata.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
+         toggleButton3.style.backgroundColor= '#bebebe';
+         document.getElementById('message-text').innerText = 'Deprem Testi Yapılan Binalar'; 
+
+    }
+    else if(geojsonSource === 'sehirdata.geojson')
+    {
+      geojsonSource = 'building.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
+      toggleButton3.style.backgroundColor= 'white';
+      document.getElementById('message-text').innerText = 'Risk Raporu'; 
+
+    }
+    else if(geojsonSource === 'layer0.geojson')
+    {
+      geojsonSource = 'sehirdata.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
+      toggleButton3.style.backgroundColor= '#bebebe';
+      document.getElementById('message-text').innerText = 'Deprem Testi Yapılan Binalar'; 
+
+    }
+    else {
+      geojsonSource = 'building.geojson';
+      map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
+      toggleButton3.style.backgroundColor= 'white';
+      document.getElementById('message-text').innerText = 'Risk Raporu'; 
+
+    }
+
+    map.getSource('maine').setData('/' + geojsonSource);
+  }
+
+  map.on('click', 'buildings', function(e) {
+    var feature = e.features[0];
+    var layerId = 'buildings';
+    var newColor = 'rgba(255, 0, 255, 0.5)'; // Yeni renk (mor)
+    map.setPaintProperty(layerId, 'fill-extrusion-color', newColor);
+  });
+  var Draw = new MapboxDraw();
+
+
+map.addControl(Draw, 'bottom-right');
+
+
+
+map.on('load', () => {
+    map.addSource('maine', {
+      'type': 'geojson',
+      'data': '/' + geojsonSource
+    });
+
+  map.addLayer({
+    'id': 'maine',
+    'type': 'fill-extrusion',
+    'source': 'maine',
+    'layout': {},
+    'paint': {
+      'fill-extrusion-color': ['get', 'color'],
+      'fill-extrusion-height': 10,
+      'fill-extrusion-opacity': 0.6
+    },
+    'before': 'building'
+  });
+  map.addLayer({
+                'id': 'route',
+                'type': 'line',
+                'source': 'route',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': ['get', 'color'],
+                    'line-width': 5
+                }
+            });
+            var customControl = new mapboxgl.NavigationControl();
+            map.addControl(customControl, 'top-right');
+
+       
+
+  /*Add a black outline 
+  map.addLayer({
+    'id': 'outline',
+    'type': 'line',
+    'source': 'maine',
+    'layout': {},
+    'paint': {
+      'line-color': '#000',
+      'line-width': 2
+    },
+    'before': 'building'
+  });
+  */
+  
+
+  map.addLayer({
+    'id': 'labels',
+    'type': 'symbol',
+    'source': 'maine',
+    'layout': {
+      'text-field': ['get', 'id'],
+      'text-font': ['Open Sans Regular'],
+      'text-size': 12
+    },
+    'paint': {
+      'text-color': '#000'
+    },
+    'before': 'building'
+  });
+
+  map.on('click', 'maine', (e) => {
+    const features = map.queryRenderedFeatures(e.point, { layers: ['maine'] });
+    if (!features.length) return;
+
+    const feature = features[0];
+    const properties = feature.properties;
+
+    document.getElementById('BinaKimlikNo').value = properties.BinaKimlikNo;
+    document.getElementById('RiskGrubu').value = properties.RiskGrubu;
+    document.getElementById('BinaYili').value = properties.BinaYili;
+    document.getElementById('DayaniklilikTesti').value = properties.DayaniklilikTesti;
+
+    openForm();
+  });
+});
+</script>
+</body>
+</html>
