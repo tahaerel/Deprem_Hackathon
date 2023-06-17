@@ -525,14 +525,14 @@ function datagir(){
 
 function toggleGeoJSONSource() {
     if (geojsonSource === 'https://tahaerel.com/geodatas/building.geojson') {
-      geojsonSource = 'layer0.geojson';
+      geojsonSource = 'https://tahaerel.com/geodatas/layer0.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.4);
       toggleButton.style.backgroundColor= '#bebebe';
       document.getElementById('message-text').innerText = 'Zemin Değerleri'; 
     }
-    else if(geojsonSource === 'simulation.geojson')
+    else if(geojsonSource === 'https://tahaerel.com/geodatas/simulation.geojson')
     {
-      geojsonSource = 'layer0.geojson';
+      geojsonSource = 'https://tahaerel.com/geodatas/layer0.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.4);
       toggleButton.style.backgroundColor = '#bebebe';
       document.getElementById('message-text').innerText = 'Zemin Değerleri'; 
@@ -550,14 +550,14 @@ function toggleGeoJSONSource() {
   }
   function toggleGeoJSONSource2() {
     if (geojsonSource === 'https://tahaerel.com/geodatas/building.geojson') {
-      geojsonSource = 'simulation.geojson';
+      geojsonSource = 'https://tahaerel.com/geodatas/simulation.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton2.style.backgroundColor= '#bebebe';
       document.getElementById('message-text').innerText = 'Deprem Simülasyonu'; 
     }
-    else if(geojsonSource === 'layer0.geojson')
+    else if(geojsonSource === 'https://tahaerel.com/geodatas/layer0.geojson')
     {
-      geojsonSource = 'simulation.geojson';
+      geojsonSource = 'https://tahaerel.com/geodatas/simulation.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton2.style.backgroundColor= '#bebebe';
       document.getElementById('message-text').innerText = 'Deprem Simülasyonu'; 
@@ -576,13 +576,13 @@ function toggleGeoJSONSource() {
 
   function toggleGeoJSONSource3() {
     if (geojsonSource === 'https://tahaerel.com/geodatas/building.geojson') {
-      geojsonSource = 'sehirdata.geojson';
+      geojsonSource = 'https://tahaerel.com/geodatas/sehirdata.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
          toggleButton3.style.backgroundColor= '#bebebe';
          document.getElementById('message-text').innerText = 'Deprem Testi Yapılan Binalar'; 
 
     }
-    else if(geojsonSource === 'sehirdata.geojson')
+    else if(geojsonSource === 'https://tahaerel.com/geodatas/sehirdata.geojson')
     {
       geojsonSource = 'https://tahaerel.com/geodatas/building.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
@@ -590,9 +590,9 @@ function toggleGeoJSONSource() {
       document.getElementById('message-text').innerText = 'Risk Raporu'; 
 
     }
-    else if(geojsonSource === 'layer0.geojson')
+    else if(geojsonSource === 'https://tahaerel.com/geodatas/layer0.geojson')
     {
-      geojsonSource = 'sehirdata.geojson';
+      geojsonSource = 'https://tahaerel.com/geodatas/sehirdata.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton3.style.backgroundColor= '#bebebe';
       document.getElementById('message-text').innerText = 'Deprem Testi Yapılan Binalar'; 
