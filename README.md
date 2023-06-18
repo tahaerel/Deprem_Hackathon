@@ -1,3 +1,2 @@
-Dijital Bursa
 
-![logo](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/4611715b-674a-44b0-be2e-76b2db7a69e1)
+![Resim1](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/860555e9-f887-41cc-9a5f-6e24a79e98a3)
