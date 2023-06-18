@@ -16,4 +16,8 @@ Projenin hedef grubu; belediyeler ve afet durumunda ilgili afet kurum ve kurulu≈
 Video
 https://www.youtube.com/watch?v=g0TgwjZZ8Jc
 
+[![Proje Videp](https://img.youtube.com/vi/g0TgwjZZ8Jc/0.jpg)](https://www.youtube.com/watch?v=g0TgwjZZ8Jc)
+
+
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/g0TgwjZZ8Jc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
