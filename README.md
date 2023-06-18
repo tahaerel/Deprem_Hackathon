@@ -16,7 +16,7 @@ Projenin hedef grubu; belediyeler ve afet durumunda ilgili afet kurum ve kurulu≈
 Video
 https://www.youtube.com/watch?v=g0TgwjZZ8Jc
 
-[![Proje Video](https://img.youtube.com/vi/g0TgwjZZ8Jc/0.jpg)](https://www.youtube.com/watch?v=g0TgwjZZ8Jc)
+[![Proje Video](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/5864572a-e66c-4b7f-ba21-994f59ee6c87)](https://www.youtube.com/watch?v=g0TgwjZZ8Jc)
 
 
 
