@@ -14,7 +14,6 @@ Buna benzer olarak doğal afetlerden bağımsız birçok belediye işleri için 
 Projenin hedef grubu; belediyeler ve afet durumunda ilgili afet kurum ve kuruluşlarıdır. Örneğin su kesintisinden etkilenen bölgelerin belirtilmesi, seferlerinde sıkıntı yaşanan toplu taşıma hatları gibi verilerin takibi belediyeleri ilgilendirmektedir. Ancak bu veriler toplumla da harita üzerinden paylaşılabilir. Bu durumlar için gerekli yetkilendirmeler yapılabilirken deprem gibi afetlerde yıkılan, yardıma gidilen veya sağlam binaların verileri de Afad gibi kurumlarla paylaşılabilmektedir. 
 
 Video
-https://www.youtube.com/watch?v=g0TgwjZZ8Jc
 
 [![Proje Video](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/0c24234b-7ecf-41f7-ae7a-53ed88d6c013)](https://www.youtube.com/watch?v=g0TgwjZZ8Jc)
 
