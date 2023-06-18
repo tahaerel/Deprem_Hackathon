@@ -17,6 +17,15 @@ Video
 
 [![Proje Video](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/0c24234b-7ecf-41f7-ae7a-53ed88d6c013)](https://www.youtube.com/watch?v=g0TgwjZZ8Jc)
 
+Görseller
 
+![ss1](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/65c629da-2ee8-40a9-bb3e-59e563522505)
+![ss2](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/3bcb4c1e-f8af-4e15-9865-f98fb0e91de3)
+![ss3](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/4dbb8125-cff4-4dea-82a3-90e2ddab54cb)
+![ss4](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/7dd74da3-eec4-496f-bec9-c09bca4b81a6)
+![ss5](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/f1d72ec7-700f-4a02-bc2d-8112c793cfa2)
+![ss6](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/ac9fc753-40d2-4b1d-aea0-f4ac8f3c54c9)
+![ss7](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/5659599b-3f94-40e7-a1c8-27d76efbc803)
+![ss8](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/43350ba6-81d9-489b-97cb-2e1eeb9f8475)
+![ss9](https://github.com/tahaerel/Deprem_Hackathon/assets/63150746/8850276e-ec51-4382-9fcc-cb214007fd20)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/g0TgwjZZ8Jc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
