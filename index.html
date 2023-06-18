@@ -354,10 +354,10 @@ body { margin: 0; padding: 0; }
         <input type="text" id="kimlik" name="ad" required>
         <label for="risk">Risk Grubu</label>
         <input type="text" id="risk" name="risk" required>
-        <label for="BinaYili">Bina Yılı</label>
-        <input type="text" id="BinaYili" name="BinaYili" required>
-        <label for="DayaniklilikTesti">Dayanıklılık Testi</label>
-        <input type="text" id="DayaniklilikTesti" name="DayaniklilikTesti" required>
+        <label for="BinaYili2">Bina Yılı</label>
+        <input type="text" id="BinaYili2" name="BinaYili2" required>
+        <label for="DayaniklilikTesti2">Dayanıklılık Testi</label>
+        <input type="text" id="DayaniklilikTesti2" name="DayaniklilikTesti2" required>
         <input type="submit" value="Kaydet">
       </form>
     </div>
@@ -501,7 +501,7 @@ const map = new mapboxgl.Map({
   zoom: 13
 });
 
-let geojsonSource = 'https://tahaerel.com/geodatas/building.geojson';
+let geojsonSource = 'building.geojson';
 
 
 const toggleButton = document.getElementById('toggle-button');
@@ -524,22 +524,22 @@ function datagir(){
 }
 
 function toggleGeoJSONSource() {
-    if (geojsonSource === 'https://tahaerel.com/geodatas/building.geojson') {
-      geojsonSource = 'https://tahaerel.com/geodatas/layer0.geojson';
+    if (geojsonSource === 'building.geojson') {
+      geojsonSource = 'layer0.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.4);
       toggleButton.style.backgroundColor= '#bebebe';
       document.getElementById('message-text').innerText = 'Zemin Değerleri'; 
     }
-    else if(geojsonSource === 'https://tahaerel.com/geodatas/simulation.geojson')
+    else if(geojsonSource === 'simulation.geojson')
     {
-      geojsonSource = 'https://tahaerel.com/geodatas/layer0.geojson';
+      geojsonSource = 'layer0.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.4);
       toggleButton.style.backgroundColor = '#bebebe';
       document.getElementById('message-text').innerText = 'Zemin Değerleri'; 
 
     }
     else {
-      geojsonSource = 'https://tahaerel.com/geodatas/building.geojson';
+      geojsonSource = 'building.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton.style.backgroundColor = 'white';
       document.getElementById('message-text').innerText = 'Risk Raporu'; 
@@ -549,22 +549,22 @@ function toggleGeoJSONSource() {
     map.getSource('maine').setData('/' + geojsonSource);
   }
   function toggleGeoJSONSource2() {
-    if (geojsonSource === 'https://tahaerel.com/geodatas/building.geojson') {
-      geojsonSource = 'https://tahaerel.com/geodatas/simulation.geojson';
+    if (geojsonSource === 'building.geojson') {
+      geojsonSource = 'simulation.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton2.style.backgroundColor= '#bebebe';
       document.getElementById('message-text').innerText = 'Deprem Simülasyonu'; 
     }
-    else if(geojsonSource === 'https://tahaerel.com/geodatas/layer0.geojson')
+    else if(geojsonSource === 'layer0.geojson')
     {
-      geojsonSource = 'https://tahaerel.com/geodatas/simulation.geojson';
+      geojsonSource = 'simulation.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton2.style.backgroundColor= '#bebebe';
       document.getElementById('message-text').innerText = 'Deprem Simülasyonu'; 
 
     }
     else {
-      geojsonSource = 'https://tahaerel.com/geodatas/building.geojson';
+      geojsonSource = 'building.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton2.style.backgroundColor= 'white';
         document.getElementById('message-text').innerText = 'Risk Raporu'; 
@@ -575,31 +575,31 @@ function toggleGeoJSONSource() {
   }
 
   function toggleGeoJSONSource3() {
-    if (geojsonSource === 'https://tahaerel.com/geodatas/building.geojson') {
-      geojsonSource = 'https://tahaerel.com/geodatas/sehirdata.geojson';
+    if (geojsonSource === 'building.geojson') {
+      geojsonSource = 'sehirdata.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
          toggleButton3.style.backgroundColor= '#bebebe';
          document.getElementById('message-text').innerText = 'Deprem Testi Yapılan Binalar'; 
 
     }
-    else if(geojsonSource === 'https://tahaerel.com/geodatas/sehirdata.geojson')
+    else if(geojsonSource === 'sehirdata.geojson')
     {
-      geojsonSource = 'https://tahaerel.com/geodatas/building.geojson';
+      geojsonSource = 'building.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton3.style.backgroundColor= 'white';
       document.getElementById('message-text').innerText = 'Risk Raporu'; 
 
     }
-    else if(geojsonSource === 'https://tahaerel.com/geodatas/layer0.geojson')
+    else if(geojsonSource === 'layer0.geojson')
     {
-      geojsonSource = 'https://tahaerel.com/geodatas/sehirdata.geojson';
+      geojsonSource = 'sehirdata.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton3.style.backgroundColor= '#bebebe';
       document.getElementById('message-text').innerText = 'Deprem Testi Yapılan Binalar'; 
 
     }
     else {
-      geojsonSource = 'https://tahaerel.com/geodatas/building.geojson';
+      geojsonSource = 'building.geojson';
       map.setPaintProperty('maine', 'fill-extrusion-opacity', 0.7);
       toggleButton3.style.backgroundColor= 'white';
       document.getElementById('message-text').innerText = 'Risk Raporu'; 
@@ -609,12 +609,7 @@ function toggleGeoJSONSource() {
     map.getSource('maine').setData('/' + geojsonSource);
   }
 
-  map.on('click', 'buildings', function(e) {
-    var feature = e.features[0];
-    var layerId = 'buildings';
-    var newColor = 'rgba(255, 0, 255, 0.5)'; // Yeni renk (mor)
-    map.setPaintProperty(layerId, 'fill-extrusion-color', newColor);
-  });
+  
   var Draw = new MapboxDraw();
 
 

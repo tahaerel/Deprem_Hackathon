@@ -12,10 +12,10 @@ $newFeature = array(
     'properties' => array(
         'id' => count($data['features']),
         'color' => '#ff0000',
-        'RiskGrubu' => $risk,
-        'DayaniklilikTesti' => $DayaniklilikTesti,
-        'BinaKimlikNo' => $kimlik,
-        'BinaYili' => $BinaYili
+        'risk' => $risk,
+        'DayaniklilikTesti2' => $DayaniklilikTesti,
+        'kimlik' => $kimlik,
+        'BinaYili2' => $BinaYili
     ),
     'geometry' => array(
         'coordinates' => array(
