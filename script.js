@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1Ijoia29yYXlkdXJtYXoiLCJhIjoiY2wxaGQ4MTJkMGJ6YjNvbG5pMHhueW5tZCJ9.U8kwg2WrbZWmkM7LkHaJvQ';
+mapboxgl.accessToken = 'Mapbox API';
 
 
 // Mapbox harita örneği oluşturma
